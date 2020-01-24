@@ -1,4 +1,4 @@
-# Implementing-a-Scanner-Parser-CFG-for-CSML
+# Implementing Scanner & Parser & CFG for CSML
 
 Context-Free Grammar, parser has implemented by using bison and the scanner has implemented by using flex for an XML based language which we call CSML, standing for Course Schedule Markup Language. The language is used to give the time table for courses scheduled at our university.
 
