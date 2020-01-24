@@ -1,0 +1,48 @@
+<prog> -> begin <elementList> end
+<elementList> -> 
+	| <element> 
+	| <element> \n <elementList>
+<element> -> <beginCourse> \n \t <classList> \n <endCourse>
+	| <beginConstraint> \n \t <itemList> \n <endConstraint>
+<beginCourse> -> tOPEN tCOURSE <courseAttrList> tCLOSE
+<endCourse> -> tEND tCOURSE tCLOSE
+<courseAttrList> -> <courseAttr>
+	| <courseAttr> <courseAttrList>
+<courseAttr> -> tCODE tSTRING
+	| tNAME tSTRING
+	| tTYPE tSTRING
+<classList> -> <class> 
+	| <class> \n <classList>
+<class> -> <beginClass> \n \t <meetingList> \n <endClass>
+<beginClass> -> tOPEN tCLASS <classAttrList> tCLOSE
+<endClass> -> tEND tCLASS tCLOSE
+<classAttrList> -> <classAttr>
+	| <classAttr> <classAttrList>
+<classAttr> -> tSECTION tSTRING
+	| tINSTRUCTOR tSTRING
+	| tCRN tNUM
+	| tCAPACITY tNUM
+<meetingList> -> <meeting> 
+	| <meeting> \n <meetingList>
+<meeting> -> <beginMeeting> <meetingAttrList> <endMeeting>
+<beginMeeting> -> tOPEN tMEETING
+<endMeeting> -> tSELF
+<meetingAttrList> -> <meetingAttr> 
+	| <meetingAttr> <meetingAttrList>
+<meetingAttr> -> tSTART tTIME 
+	| <day>
+	| tEND_A tTIME
+<day> -> tDAY tMON 
+	| tDAY tTUE 
+	| tDAY tWED 
+	| tDAY THU 
+	| tDAY tFRI
+<beginConstraint> -> tOPEN tCONSTRAINT tCLOSE
+<endConstraint> -> tEND tCONSTRAINT tCLOSE
+<itemList> -> <item> 
+	| <item> \n <itemList>
+<item> -> <beginItem> <itemAttr> <endItem>
+<beginItem> -> tOPEN tITEM 
+<endItem> -> tSELF
+<itemAttr> -> tCODE tSTRING 
+	| tCRN tNUM

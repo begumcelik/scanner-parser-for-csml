@@ -1,0 +1,40 @@
+%{
+#include "24027-hw3.tab.h"
+%}
+ int line_count=1;
+STRING ('[^']*')|(["][^"]*["])
+NUMBER 0|([1-9][0-9]*)
+TIME ([0-1][0-9]|2[0-3]):[0-5][0-9]
+%%
+[/][>] return tSELF;
+[<] return tOPEN;
+[<][/] return tEND;
+course return tCOURSE;
+meeting return tMEETING;
+item return tITEM;
+code= return tCODE;
+type= return tTYPE;
+section= return tSECTION;
+start= return tSTART;
+day= return tDAY;
+M return tMON;
+T return tTUE;
+R return tTHU;
+W return  tWED;
+F return  tFRI;
+[>] return tCLOSE;
+class return tCLASS;
+constraint return tCONSTRAINT;
+name= return tNAME;
+instructor= return tINSTRUCTOR;
+crn= return tCRN;
+capacity= return tCAPACITY;
+end= return tEND_A;
+{TIME} return tTIME;
+{STRING} return tSTRING;
+{NUMBER} return tNUM;
+\t  //filters out the white space
+[ ] //filters out the white space
+\n line_count++;
+. return yytext[0]; //passes any other character to the parser
+%%
